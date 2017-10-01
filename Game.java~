@@ -1,0 +1,158 @@
+import java.awt.event.KeyEvent;
+
+public class Game
+{
+  
+  // set to false to use your code
+  private static final boolean DEMO = true;           
+  public MattGame dg;
+  
+  // Game window should be wider than tall:   H_DIM < W_DIM   
+  // (more effectively using space)
+  private static final int H_DIM = 5;   // # of cells vertically by default: height of game
+  private static final int W_DIM = 10;  // # of cells horizontally by default: width of game
+  private static final int U_ROW = 0;
+  
+  private Grid grid;
+  private int userRow;
+  private int msElapsed;
+  private int timesGet;
+  private int timesAvoid;
+  
+  private int pauseTime = 100;
+  
+  public Game()
+  {
+
+    init(H_DIM, W_DIM, U_ROW);
+  }
+  
+  public Game(int hdim, int wdim, int uRow)
+  {
+    // to be filled
+
+  }
+  
+  private void init(int hdim, int wdim, int uRow) {  
+    grid = new Grid(hdim, wdim);   
+    
+    //other Grid constructor of interest: 
+    //    comment the line above; uncomment the one below 
+    //You can adjust colors by creating Color objects: look at the Grid constructors
+    //grid = new Grid(hdim, wdim, Color.MAGENTA);   
+    ///////////////////////////////////////////////
+    userRow = uRow;
+    msElapsed = 0;
+    timesGet = 0;
+    timesAvoid = 0;
+    updateTitle();
+    grid.setImage(new Location(userRow, 0), "user.gif");
+    
+  }
+  
+  public void play()
+  {
+    
+    while (!isGameOver())
+    {
+      grid.pause(pauseTime);
+      handleKeyPress();
+      if (msElapsed % (3 * pauseTime) == 0)
+      {
+        scrollLeft();
+        populateRightEdge();
+      }
+      updateTitle();
+      msElapsed += pauseTime;
+    }
+  }
+  
+  public void handleKeyPress()
+  {
+    int key = grid.checkLastKeyPressed();
+    
+    //use Java constant names for key presses
+    //http://docs.oracle.com/javase/7/docs/api/constant-values.html#java.awt.event.KeyEvent.VK_DOWN
+    if (key == KeyEvent.VK_Q)
+      System.exit(0);
+    
+    // to help you with step 9  --> explore to understand how to tune your game speed
+    else if (key == KeyEvent.VK_T) 
+    {
+      boolean interval = (msElapsed % (3 * pauseTime) == 0);
+      System.out.println("pauseTime " + pauseTime + " msElapsed reset " + msElapsed 
+                        + " interval " + interval);
+    }
+  }
+  
+  public void populateRightEdge()
+  {
+    
+  }
+  
+  public void scrollLeft()
+  {
+    
+  }
+  
+  public void handleCollision(Location loc)
+  {
+    
+  }
+  
+  public int getScore()
+  {
+    return 0;
+  }
+  
+  public void updateTitle()
+  {
+    grid.setTitle("Game:  " + getScore());
+  }
+  
+  public boolean isGameOver()
+  {
+    return false;
+  }
+  
+  public static void test()
+  {
+    if (DEMO) {       // reference game: 
+                      //   - play and observe first the mechanism of the demo to understand the basic game 
+                      //   - go back to the demo anytime you don't know what your next step is
+                      //     or details about it are not concrete
+                      //         figure out according to the game play 
+                      //         (the sequence of display and action) how the functionality
+                      //         you are implementing next is supposed to operate
+                      // It's critical to have a plan for each piece of code: follow, understand
+                      // and study the assignment description details; and explore the basic game. 
+                      // You should always know what you are doing (your current, small goal) before
+                      // implementing that piece or talk to us. 
+
+      System.out.println("Running the demo: DEMO=" + DEMO);
+      //default constructor   (4 by 10)
+      MattGame game = new MattGame();
+      //other constructor: client adjusts game window size   TRY IT
+      // MattGame game = new MattGame(10, 20, 0);
+      game.play();
+    
+    } else {
+      System.out.println("Running student game: DEMO=" + DEMO);
+      // !DEMO   -> your code should execute those lines when you are
+      // implementing your game
+      
+      //test 1: with parameterless constructor
+      Game game = new Game();
+      
+      //test 2: with constructor specifying grid size    IT SHOULD ALSO WORK as long as height < width
+      //Game game = new Game(10, 20, 0);
+      
+      game.play();
+    }
+  }
+  
+  public static void main(String[] args)
+  {
+    test();
+  }
+}
