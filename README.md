@@ -1,6 +1,6 @@
 # AstroScrollGame
 
-This is the raw, unmodified code for a small game I made for an assignment for COSC102: Data Structures.  For this assignment, we were given some starter classes such as Grid, Color, and Class.  For this assignment we were given a large degree of creative leeway regarding rules, assets, etcs.  This was my favorite assignment for that class for that very reason.  It was the first time I had some 'freedom' in coding.
+This is the raw, unmodified code for a small game I made for an assignment for COSC102: Data Structures.  For this assignment, we were given some starter classes such as Grid, Color, and Class.  For this assignment we were given a large degree of creative leeway regarding rules, assets, etcs.  This was my favorite assignment for that class for that very reason.  It was the first time I had some 'freedom' in coding.  Making the assets for this game on Photoshop was also a blast!
 
 # Controls
 
@@ -13,6 +13,3 @@ Space bar fires your weapon.  It will clear the entire row of ships ahead of you
 See if you can survive to the end!
 
 Welcome to AstroScrollGame where the frame rate is low and the points don't matter!
-
-# Between You and Me
-As you might be able to tell, there are flaws with the code organization, optimization, and documentation.  Since writing this 3 years ago, I have learned how to better organize and document my code.  Nonetheless, this particular assignment holds a special place in my heart.  Manually creating the assets for this game on Photoshop was also a blast!
